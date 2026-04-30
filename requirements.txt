@@ -1,0 +1,17 @@
+atproto==0.0.55
+python-dotenv==1.0.0
+supabase==2.5.0
+pandas==2.2.0
+requests==2.31.0
+spacy==3.7.4
+scikit-learn==1.4.0
+transformers==4.38.0
+torch==2.2.0
+fastapi==0.110.0
+uvicorn==0.27.1
+streamlit==1.31.0
+codecarbon==2.3.3
+pytest==8.0.0
+shap==0.44.0
+huggingface_hub==0.21.0
+httpx==0.27.2
