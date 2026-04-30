@@ -37,10 +37,10 @@ class BlueskyCollector:
                     "id": post.uri,
                     "text": post.record.text,
                     "author": post.author.handle,
-                    "created_at": post.record.created_at,
+                    "created_at": post.record.created_at[:19].replace("T", " ") if post.record.created_at else None,
                     "likes": post.like_count or 0,
                     "reposts": post.repost_count or 0,
-                    "collected_at": datetime.now().isoformat(),
+                    "collected_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "query": query,
                     "label": None,
                     "fake_score": None
