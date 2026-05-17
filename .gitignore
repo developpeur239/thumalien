@@ -224,3 +224,5 @@ data/raw/
 *.db
 .venv/
 *.pkl
+models/
+camembert_v3.zip
