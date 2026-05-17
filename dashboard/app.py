@@ -115,7 +115,9 @@ section[data-testid="stSidebar"] > div:first-child {
 </style>
 """, unsafe_allow_html=True)
 
-# ─── SESSION STATE ──────────────────────────────────────────────────────────
+# URL API — HuggingFace Spaces
+API_URL = "https://thumalien-thumalien-api.hf.space"
+
 if "history" not in st.session_state:
     st.session_state.history = []
 if "total_analyses" not in st.session_state:
@@ -126,7 +128,6 @@ EMOTION_COLORS = {
     "joy": "#22C55E", "neutral": "#6B7280", "sadness": "#3B82F6", "surprise": "#EC4899"
 }
 
-# ─── SIDEBAR ────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown('<div class="sidebar-header">Historique</div>', unsafe_allow_html=True)
     if not st.session_state.history:
@@ -157,7 +158,6 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# ─── MAIN ───────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="thu-header">
     <div class="thu-logo">Thu<span>malien</span></div>
@@ -191,7 +191,6 @@ with col_btn1:
 with col_btn2:
     st.button("✕", use_container_width=True)
 
-# ─── ANALYSE ────────────────────────────────────────────────────────────────
 if analyze_btn and text_input.strip():
     thinking_placeholder = st.empty()
     thinking_placeholder.markdown(
@@ -202,7 +201,7 @@ if analyze_btn and text_input.strip():
     thinking_placeholder.empty()
 
     try:
-        response = requests.post("http://localhost:8000/analyze", json={"text": text_input}, timeout=15)
+        response = requests.post(f"{API_URL}/analyze", json={"text": text_input}, timeout=30)
         result    = response.json()
         label     = result["label"]
         confidence= result["confidence"]
@@ -216,7 +215,6 @@ if analyze_btn and text_input.strip():
         })
         st.session_state.total_analyses += 1
 
-        # ── VERDICT ──
         if label == "Fake News":
             icon, card_class, title = "❌", "verdict-fake", "Fake News Détectée"
         elif label == "Douteux":
@@ -233,7 +231,6 @@ if analyze_btn and text_input.strip():
         </div>
         """, unsafe_allow_html=True)
 
-        # ── GAUGE + RADAR ──
         col_gauge, col_radar = st.columns(2)
 
         with col_gauge:
@@ -277,7 +274,6 @@ if analyze_btn and text_input.strip():
             )
             st.plotly_chart(fig_radar, use_container_width=True)
 
-        # ── SCORE CARDS ──
         st.markdown('<div class="section-title">Scores détaillés</div>', unsafe_allow_html=True)
         st.markdown(f"""
         <div class="score-grid">
@@ -287,7 +283,6 @@ if analyze_btn and text_input.strip():
         </div>
         """, unsafe_allow_html=True)
 
-        # ── PROGRESS BARS ──
         st.markdown('<div class="section-title">Répartition visuelle</div>', unsafe_allow_html=True)
         for bar_label, bar_val, bar_color in [
             ("Crédible", scores['credible']*100, "#22C55E"),
@@ -301,7 +296,6 @@ if analyze_btn and text_input.strip():
             </div>
             """, unsafe_allow_html=True)
 
-        # ── EMOTION ──
         if emotion:
             em_color = EMOTION_COLORS.get(emotion.get("emotion", "neutral"), "#6B7280")
             st.markdown('<div class="section-title">Analyse émotionnelle</div>', unsafe_allow_html=True)
@@ -320,7 +314,7 @@ if analyze_btn and text_input.strip():
         st.markdown(f"""
         <div style="background:rgba(255,69,69,0.08);border:1px solid rgba(255,69,69,0.2);border-radius:12px;padding:1rem 1.5rem;margin:1rem 0;">
             <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#FF4545;margin-bottom:4px;">ERREUR API</div>
-            <div style="font-size:0.85rem;color:#9CA3AF;">Vérifie que l'API tourne : <code>python src/api/main.py</code></div>
+            <div style="font-size:0.85rem;color:#9CA3AF;">Erreur : {str(e)}</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -335,7 +329,6 @@ else:
     </div>
     """, unsafe_allow_html=True)
 
-# ─── FOOTER ─────────────────────────────────────────────────────────────────
 st.markdown("""
 <hr class="thu-divider">
 <div style="display:flex;justify-content:space-between;align-items:center;">
