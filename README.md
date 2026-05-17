@@ -1,6 +1,6 @@
 # Thumalien
 
-Détecteur de fake news sur Bluesky, développé dans le cadre du Mastère Big Data & IA à SUP DE VINCI (2025).
+Détecteur de fake news sur Bluesky, développé dans le cadre du Mastère Big Data & IA à SUP DE VINCI (2025-2026).
 
 L'idée de base : automatiser ce qu'un fact-checker humain ferait à la main — lire un post, évaluer sa crédibilité, identifier l'émotion qu'il cherche à provoquer.
 
@@ -105,4 +105,4 @@ Les émissions sont loggées et consultables via `/energy`.
 
 ---
 
-Mastère Big Data & IA — SUP DE VINCI — 2025
+Mastère Big Data & IA — SUP DE VINCI — 2025-2026
