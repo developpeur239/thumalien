@@ -14,45 +14,25 @@ st.set_page_config(
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; }
-
-html, body, [class*="css"] {
-    font-family: 'DM Sans', sans-serif;
-    background: radial-gradient(circle at 20% 20%, #151826, #0D0E12 60%);
-    color: #E8EAF0;
-}
-
+html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; background: radial-gradient(circle at 20% 20%, #151826, #0D0E12 60%); color: #E8EAF0; }
 #MainMenu, footer, header { visibility: hidden; }
 .stDeployButton { display: none; }
-
-section[data-testid="stSidebar"] > div:first-child {
-    background: rgba(15, 16, 22, 0.92);
-    backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(255,255,255,0.05);
-}
-
+section[data-testid="stSidebar"] > div:first-child { background: rgba(15,16,22,0.92); backdrop-filter: blur(12px); border-right: 1px solid rgba(255,255,255,0.05); }
 .block-container { padding: 2rem 3rem; max-width: 1100px; }
-
 .thu-header { display: flex; align-items: center; gap: 14px; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .thu-logo { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: #F0F1F5; letter-spacing: -0.5px; }
 .thu-logo span { color: #4F8EF7; }
 .thu-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; color: #4F8EF7; background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.3); padding: 3px 10px; border-radius: 100px; letter-spacing: 1px; text-transform: uppercase; }
-
 .stat-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6B7280; background: rgba(20,21,25,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; gap: 8px; transition: all 0.25s ease; }
 .stat-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(79,142,247,0.15); border-color: rgba(79,142,247,0.3); }
 .stat-pill strong { color: #E8EAF0; font-size: 0.85rem; }
-
 .stTextArea label { display: none; }
 .stTextArea textarea { background: rgba(20,21,25,0.6) !important; backdrop-filter: blur(12px) !important; border: 1px solid rgba(255,255,255,0.06) !important; border-radius: 14px !important; color: #E8EAF0 !important; font-family: 'DM Sans', sans-serif !important; font-size: 0.95rem !important; line-height: 1.7 !important; padding: 18px 20px !important; transition: all 0.25s ease !important; resize: none !important; }
 .stTextArea textarea:focus { border-color: #4F8EF7 !important; box-shadow: 0 0 0 3px rgba(79,142,247,0.12) !important; }
 .stTextArea textarea::placeholder { color: #2D3148 !important; }
-
 .stButton > button { background: #4F8EF7 !important; color: #fff !important; border: none !important; border-radius: 12px !important; font-family: 'DM Sans', sans-serif !important; font-weight: 600 !important; font-size: 0.9rem !important; padding: 14px 28px !important; cursor: pointer !important; transition: all 0.3s ease !important; width: 100% !important; position: relative; overflow: hidden; }
-.stButton > button::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent); opacity: 0; transition: 0.4s; }
-.stButton > button:hover::before { opacity: 1; }
 .stButton > button:hover { background: #3D7DE8 !important; transform: translateY(-2px) !important; box-shadow: 0 10px 40px rgba(79,142,247,0.35) !important; }
-
 .verdict-card { border-radius: 18px; padding: 2rem 2.5rem; margin: 1.5rem 0; position: relative; overflow: hidden; backdrop-filter: blur(14px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .verdict-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
 .verdict-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
@@ -70,7 +50,6 @@ section[data-testid="stSidebar"] > div:first-child {
 .verdict-title { font-size: 2.2rem; font-weight: 700; line-height: 1.1; margin-bottom: 0.4rem; color: #F0F1F5; }
 .verdict-confidence { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6B7280; }
 .verdict-confidence strong { color: #A0A7B8; }
-
 .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
 .score-card { background: rgba(20,21,25,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 1.4rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .score-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
@@ -79,21 +58,17 @@ section[data-testid="stSidebar"] > div:first-child {
 .score-fake { color: #FF4545; }
 .score-douteux { color: #FFB020; }
 .score-credible { color: #22C55E; }
-
 .progress-wrap { margin: 0.4rem 0; }
 .progress-label { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #6B7280; margin-bottom: 6px; }
 .progress-bar-bg { background: rgba(30,33,48,0.8); border-radius: 100px; height: 6px; overflow: hidden; }
 .progress-bar-fill { height: 100%; border-radius: 100px; transition: width 1s ease; box-shadow: 0 0 8px currentColor; }
-
 .emotion-card { background: rgba(20,21,25,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1.2rem; transition: transform 0.3s ease; }
 .emotion-card:hover { transform: translateY(-3px); }
 .emotion-icon { font-size: 2.5rem; }
 .emotion-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #4B5263; margin-bottom: 4px; }
 .emotion-value { font-size: 1.4rem; font-weight: 700; color: #F0F1F5; }
 .emotion-conf { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6B7280; margin-top: 2px; }
-
 .section-title { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #4B5263; margin: 1.8rem 0 1rem; }
-
 .history-item { background: rgba(20,21,25,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
 .history-text { font-size: 0.78rem; color: #9CA3AF; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
 .history-meta { display: flex; justify-content: space-between; align-items: center; }
@@ -102,20 +77,16 @@ section[data-testid="stSidebar"] > div:first-child {
 .hb-douteux { background: rgba(255,176,32,0.15); color: #FFB020; }
 .hb-credible { background: rgba(34,197,94,0.15); color: #22C55E; }
 .history-time { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #3D4150; }
-
 .placeholder-zone { background: rgba(20,21,25,0.5); backdrop-filter: blur(10px); border: 1px dashed rgba(255,255,255,0.07); border-radius: 20px; padding: 3rem; text-align: center; margin: 1.5rem 0; }
 .placeholder-icon { font-size: 2rem; margin-bottom: 1rem; }
 .placeholder-text { color: #3D4150; font-size: 0.85rem; line-height: 1.6; }
-
 .thu-divider { border: none; border-top: 1px solid rgba(255,255,255,0.04); margin: 1.5rem 0; }
 .sidebar-header { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #4B5263; margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-
 .thinking-bar { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4F8EF7; margin: 1rem 0; animation: pulse 1.5s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
 </style>
 """, unsafe_allow_html=True)
 
-# URL API — HuggingFace Spaces
 API_URL = "https://thumalien-thumalien-api.hf.space"
 
 if "history" not in st.session_state:
@@ -147,13 +118,12 @@ with st.sidebar:
                 </div>
             </div>
             """, unsafe_allow_html=True)
-
     st.markdown('<hr class="thu-divider">', unsafe_allow_html=True)
     st.markdown(f"""
     <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#4B5263;line-height:2.2;">
         <div>Analyses : <strong style="color:#6B7280">{st.session_state.total_analyses}</strong></div>
-        <div>Modèle : <strong style="color:#6B7280">CamemBERT</strong></div>
-        <div>Précision : <strong style="color:#6B7280">72%</strong></div>
+        <div>Modele : <strong style="color:#6B7280">CamemBERT</strong></div>
+        <div>Precision : <strong style="color:#6B7280">72%</strong></div>
         <div>Version : <strong style="color:#6B7280">1.0.0</strong></div>
     </div>
     """, unsafe_allow_html=True)
@@ -171,14 +141,14 @@ with c1:
 with c2:
     st.markdown('<div class="stat-pill">🧠 <strong>CamemBERT</strong></div>', unsafe_allow_html=True)
 with c3:
-    st.markdown('<div class="stat-pill">🎯 <strong>72%</strong> précision</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stat-pill">🎯 <strong>72%</strong> precision</div>', unsafe_allow_html=True)
 with c4:
     st.markdown('<div class="stat-pill">⚡ <strong>Bluesky</strong></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Analyser un post</div>', unsafe_allow_html=True)
 
 text_input = st.text_area(
-    "Post", placeholder="Colle ici un post Bluesky, un titre d'article, ou n'importe quel texte à analyser...",
+    "Post", placeholder="Colle ici un post Bluesky, un titre d'article, ou n'importe quel texte a analyser...",
     height=130, label_visibility="collapsed"
 )
 
@@ -193,10 +163,7 @@ with col_btn2:
 
 if analyze_btn and text_input.strip():
     thinking_placeholder = st.empty()
-    thinking_placeholder.markdown(
-        '<div class="thinking-bar">⟳ &nbsp; Analyse intelligente en cours...</div>',
-        unsafe_allow_html=True
-    )
+    thinking_placeholder.markdown('<div class="thinking-bar">⟳ &nbsp; Analyse intelligente en cours...</div>', unsafe_allow_html=True)
     time.sleep(1.2)
     thinking_placeholder.empty()
 
@@ -207,6 +174,7 @@ if analyze_btn and text_input.strip():
         confidence= result["confidence"]
         scores    = result["scores"]
         emotion   = result.get("emotion", {})
+        energy    = result.get("energy", {})
 
         st.session_state.history.append({
             "text": text_input, "label": label,
@@ -232,7 +200,6 @@ if analyze_btn and text_input.strip():
         """, unsafe_allow_html=True)
 
         col_gauge, col_radar = st.columns(2)
-
         with col_gauge:
             gauge_color = "#FF4545" if label == "Fake News" else ("#FFB020" if label == "Douteux" else "#22C55E")
             fig_gauge = go.Figure(go.Indicator(
@@ -240,35 +207,26 @@ if analyze_btn and text_input.strip():
                 value=confidence * 100,
                 number={"suffix": "%", "font": {"size": 26, "color": "#E8EAF0", "family": "JetBrains Mono"}},
                 title={"text": "Confiance", "font": {"color": "#6B7280", "size": 11, "family": "JetBrains Mono"}},
-                gauge={
-                    "axis": {"range": [0, 100], "tickfont": {"color": "#4B5263", "size": 9}},
-                    "bar": {"color": gauge_color, "thickness": 0.25},
-                    "bgcolor": "rgba(20,21,25,0.6)",
-                    "bordercolor": "#1E2130",
-                    "steps": [{"range": [0, 100], "color": "rgba(30,33,48,0.5)"}],
-                }
+                gauge={"axis": {"range": [0, 100], "tickfont": {"color": "#4B5263", "size": 9}},
+                       "bar": {"color": gauge_color, "thickness": 0.25},
+                       "bgcolor": "rgba(20,21,25,0.6)", "bordercolor": "#1E2130",
+                       "steps": [{"range": [0, 100], "color": "rgba(30,33,48,0.5)"}]}
             ))
-            fig_gauge.update_layout(
-                height=220, margin=dict(l=20, r=20, t=40, b=10),
-                paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)"
-            )
+            fig_gauge.update_layout(height=220, margin=dict(l=20, r=20, t=40, b=10),
+                                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
             st.plotly_chart(fig_gauge, use_container_width=True)
 
         with col_radar:
             fig_radar = go.Figure(go.Scatterpolar(
                 r=[scores['credible']*100, scores['douteux']*100, scores['fake_news']*100],
                 theta=['Crédible', 'Douteux', 'Fake News'],
-                fill='toself',
-                fillcolor='rgba(79,142,247,0.1)',
-                line=dict(color='#4F8EF7', width=2),
-                marker=dict(color='#4F8EF7', size=6)
+                fill='toself', fillcolor='rgba(79,142,247,0.1)',
+                line=dict(color='#4F8EF7', width=2), marker=dict(color='#4F8EF7', size=6)
             ))
             fig_radar.update_layout(
-                polar=dict(
-                    bgcolor="rgba(0,0,0,0)",
-                    radialaxis=dict(visible=True, range=[0,100], gridcolor="#1E2130", tickfont=dict(color="#4B5263", size=9)),
-                    angularaxis=dict(gridcolor="#1E2130", tickfont=dict(color="#9CA3AF", size=10))
-                ),
+                polar=dict(bgcolor="rgba(0,0,0,0)",
+                           radialaxis=dict(visible=True, range=[0,100], gridcolor="#1E2130", tickfont=dict(color="#4B5263", size=9)),
+                           angularaxis=dict(gridcolor="#1E2130", tickfont=dict(color="#9CA3AF", size=10))),
                 height=220, margin=dict(l=40, r=40, t=30, b=30),
                 paper_bgcolor="rgba(0,0,0,0)", showlegend=False
             )
@@ -296,6 +254,7 @@ if analyze_btn and text_input.strip():
             </div>
             """, unsafe_allow_html=True)
 
+        # ── EMOTION ──
         if emotion:
             em_color = EMOTION_COLORS.get(emotion.get("emotion", "neutral"), "#6B7280")
             st.markdown('<div class="section-title">Analyse émotionnelle</div>', unsafe_allow_html=True)
@@ -306,6 +265,21 @@ if analyze_btn and text_input.strip():
                     <div class="emotion-label">Émotion dominante</div>
                     <div class="emotion-value" style="color:{em_color};">{emotion.get('emotion_fr', 'Neutre')}</div>
                     <div class="emotion-conf">Confiance : {emotion.get('confidence', 0)*100:.1f}%</div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+        # ── ENERGIE ──
+        if energy:
+            emissions_g = energy.get('emissions_g', 0)
+            st.markdown('<div class="section-title">Suivi énergétique</div>', unsafe_allow_html=True)
+            st.markdown(f"""
+            <div class="emotion-card" style="border-left: 3px solid #22C55E;">
+                <div class="emotion-icon">🌱</div>
+                <div>
+                    <div class="emotion-label">CO₂ cette analyse</div>
+                    <div class="emotion-value" style="color:#22C55E;">{emissions_g:.4f}g</div>
+                    <div class="emotion-conf">180x moins énergivore que GPT-4</div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
